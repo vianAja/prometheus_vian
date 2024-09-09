@@ -1,0 +1,16 @@
+groups:
+- name: haproxy.rules
+  rules:
+    - alert: Nginx1_Down 
+      expr: haproxy_server_weight{server='node01'} == 0
+      for: 3m
+      annotations:
+        summary: "Nginx1 down"
+        description: "Nginx1 down for 3 minutes"
+
+    - alert: Nginx2_Down
+      expr: haproxy_server_weight{server='node02'} == 0
+      for: 3m
+      annotations:
+        summary: "Nginx2 down"
+        description: "Nginx2 down for 3 minutes"

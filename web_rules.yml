@@ -1,0 +1,16 @@
+groups:
+- name: webserver.rules
+  rules:
+  - alert: ApacheNode1_Down
+    expr: apache_up{instance="10.13.13.10:9117", job="apache-vian"} == 0
+    for: 10s
+    annotations:
+      summary: "Service Apache2 dari 10.13.13.10 Down"
+      description: "Service Apache2 nya Down kawan, bisa cek dulu di node 1"
+
+  - alert: ApacheNode2_Down
+    expr: apache_up{instance="10.13.13.20:9117", job="apache-vian"} == 0
+    for: 10s
+    annotations:
+      summary: "Service Apache2 dari 10.13.13.20 Down"
+      description: "Service Apache2 nya Down kawan, bisa cek dulu di node 2
